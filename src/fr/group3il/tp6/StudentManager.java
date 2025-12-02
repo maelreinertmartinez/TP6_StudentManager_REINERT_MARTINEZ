@@ -6,31 +6,32 @@ public class StudentManager {
     public StudentManager() {
         students = new Student[3];
 
-        students[0] = new Student("Alice", new int[]{12, 15, 9});
-        students[1] = new Student("Bob", new int[]{8, 10});
-        students[2] = new Student("Charlie", new int[]{14, 14, 13});
+        students[0] = new Student("Alice", new double[]{12, 15, 9});
+        students[1] = new Student("Bob", new double[]{8, 10});
+        students[2] = new Student("Charlie", new double[]{14, 14, 13});
     }
 
     public double classAverage() {
-        int classSum = 0;
+        double classSum = 0;
+        int numberOfGrades = 0;
         for (Student student : students) {
-            int studentSum = sum(student.grades);
-
-            classSum = classSum + studentSum;
+            classSum += sum(student.grades);
+            numberOfGrades += student.grades.length;
         }
 
-        return classSum / students.length; // 🐞 bug : division par le nombre d'étudiants
+        return classSum / numberOfGrades;
     }
 
-    public int bestAverage() {
+    public double bestAverage() {
         double bestAverage = 0;
         for (Student student : students) {
-            double avg = computeAverage(student.grades); // 🐞 bug : division entière
+            double avg = computeAverage(student.grades);
             if (avg > bestAverage) {
                 bestAverage = avg;
             }
         }
-        return (int) bestAverage;
+
+        return bestAverage;
     }
 
     public void printStudents() {
@@ -50,16 +51,16 @@ public class StudentManager {
         }
     }
 
-    public int sum(int[] grades) {
-        int sum = 0;
-        for (int grade : grades) {
-            sum = sum + grade;
+    public double sum(double[] grades) {
+        double sum = 0;
+        for (double grade : grades) {
+            sum += grade;
         }
+
         return sum;
     }
 
-    private double computeAverage(int[] grades) {
-        int sum = sum(grades);
-        return sum / grades.length; // 🐞 division entière
+    private double computeAverage(double[] grades) {
+        return sum(grades) / grades.length;
     }
 }

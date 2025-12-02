@@ -1,5 +1,7 @@
 package fr.group3il.tp6;
 
+// 🔴 Javadoc à faire
+
 public class StudentApplication {
     public static void main(String[] args) {
         StudentManager m = new StudentManager();
