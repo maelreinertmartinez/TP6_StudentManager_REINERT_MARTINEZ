@@ -13,11 +13,8 @@ public class StudentManager {
 
     public double classAverage() {
         int classSum = 0;
-        for (int i = 0; i < students.length; i++) {
-            int studentSum = 0;
-            for (int j = 0; j < students[i].notes.length; j++) {
-                studentSum = studentSum + students[i].notes[j];
-            }
+        for (Student student : students) {
+            int studentSum = sum(student.grades);
 
             classSum = classSum + studentSum;
         }
@@ -27,13 +24,8 @@ public class StudentManager {
 
     public int bestAverage() {
         double bestAverage = 0;
-        for (int i = 0; i < students.length; i++) {
-            int sum = 0;
-            for (int j = 0; j < students[i].notes.length; j++) {
-                sum = sum + students[i].notes[j];
-            }
-
-            double avg = sum / students[i].notes.length; // 🐞 bug : division entière
+        for (Student student : students) {
+            double avg = computeAverage(student.grades); // 🐞 bug : division entière
             if (avg > bestAverage) {
                 bestAverage = avg;
             }
@@ -44,26 +36,30 @@ public class StudentManager {
     public void printStudents() {
         System.out.println("Liste des étudiants :");
 
-        for (int i = 0; i < students.length; i++) {
-            System.out.println("- " + students[i].name);
+        for (Student student : students) {
+            System.out.println("- " + student.name);
 
             System.out.println("Notes :");
-            for (int j = 0; j < students[i].notes.length; j++) {
-                System.out.println(students[i].notes[j]);
+            for (int j = 0; j < student.grades.length; j++) {
+                System.out.println(student.grades[j]);
             }
 
-            System.out.println("Moyenne : " + average(students[i].notes));
+            System.out.println("Moyenne : " + computeAverage(student.grades));
 
             System.out.println("----------------");
         }
     }
 
-    public double average(int[] notes) {
+    public int sum(int[] grades) {
         int sum = 0;
-        for (int i = 0; i < notes.length; i++) {
-            sum = sum + notes[i];
+        for (int grade : grades) {
+            sum = sum + grade;
         }
+        return sum;
+    }
 
-        return sum / notes.length; // 🐞 division entière
+    private double computeAverage(int[] grades) {
+        int sum = sum(grades);
+        return sum / grades.length; // 🐞 division entière
     }
 }

@@ -1,11 +1,11 @@
 package fr.group3il.tp6;
 
 public class Student {
-    public String name; // nom de l'étudiant
-    public int[] notes; // tableau de notes
+    public String name;
+    public int[] grades;
 
-    public Student(String name, int[] notes) {
+    public Student(String name, int[] grades) {
         this.name = name;
-        this.notes = notes;
+        this.grades = grades;
     }
 }
