@@ -1,8 +1,14 @@
 package fr.group3il.tp6;
 
+/**
+ * Classe contenant plusieurs fonctions de gestion d'une promotion (afficher ses notes, calculer la moyenne, ...)
+ */
 public class StudentManager {
     public Student[] students;
 
+    /**
+     * Constructeur par défaut de la classe
+     */
     public StudentManager() {
         students = new Student[3];
 
@@ -11,6 +17,11 @@ public class StudentManager {
         students[2] = new Student("Charlie", new double[]{14, 14, 13});
     }
 
+    /**
+     * Calcule la moyenne de toutes les notes d'une classe
+     *
+     * @return la moyenne
+     */
     public double classAverage() {
         double classSum = 0;
         int numberOfGrades = 0;
@@ -22,6 +33,11 @@ public class StudentManager {
         return classSum / numberOfGrades;
     }
 
+    /**
+     * Donne la meilleure moyenne de la classe
+     *
+     * @return la meilleure moyenne
+     */
     public double bestAverage() {
         double bestAverage = 0;
         for (Student student : students) {
@@ -34,6 +50,9 @@ public class StudentManager {
         return bestAverage;
     }
 
+    /**
+     * Affiche tous les étudiants avec leurs moyennes
+     */
     public void printStudents() {
         System.out.println("Liste des étudiants :");
 
@@ -51,6 +70,12 @@ public class StudentManager {
         }
     }
 
+    /**
+     * Calcule la somme de plusieurs notes
+     *
+     * @param grades les notes
+     * @return la somme
+     */
     public double sum(double[] grades) {
         double sum = 0;
         for (double grade : grades) {
@@ -60,6 +85,12 @@ public class StudentManager {
         return sum;
     }
 
+    /**
+     * Calcule la moyenne de plusieurs notes
+     *
+     * @param grades les notes
+     * @return la moyenne
+     */
     private double computeAverage(double[] grades) {
         return sum(grades) / grades.length;
     }

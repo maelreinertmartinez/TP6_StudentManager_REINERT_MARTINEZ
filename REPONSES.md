@@ -1,5 +1,7 @@
 J'ai réalisé ce TP sur IntellijIDEA.
 
+Repo github : https://github.com/maelreinertmartinez/TP6_StudentManager_REINERT_MARTINEZ.git
+
 1. Quelles sont les 3 classes du projet et à quoi servent-elles ?
 
 Les 3 classes du projet sont :

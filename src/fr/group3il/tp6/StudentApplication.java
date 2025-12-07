@@ -1,7 +1,8 @@
 package fr.group3il.tp6;
 
-// 🔴 Javadoc à faire
-
+/**
+ * Point d'entrée de l'application
+ */
 public class StudentApplication {
     public static void main(String[] args) {
         StudentManager m = new StudentManager();
